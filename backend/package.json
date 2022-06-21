@@ -8,13 +8,14 @@
   "scripts": {
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
-    "seeds": "echo 'Please create seeds file'",
+    "seeds": "node ./lib/seed.js",
     "test": "newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json",
     "stop": "lsof -ti :3000 | xargs kill"
   },
   "dependencies": {
     "axios": "^0.25.0",
     "body-parser": "1.15.0",
+    "chance": "^1.1.8",
     "cors": "2.7.1",
     "dotenv": "^8.2.0",
     "ejs": "2.4.1",
@@ -33,6 +34,7 @@
     "passport-local": "1.0.0",
     "request": "2.69.0",
     "slug": "0.9.1",
+    "slugify": "^1.6.5",
     "underscore": "1.8.3"
   },
   "devDependencies": {
