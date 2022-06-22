@@ -4,19 +4,13 @@ import agent from "../../agent";
 import { APPLY_TITLE_FILTER } from "../../constants/actionTypes";
 import logo from "../../imgs/logo.png";
 
-const mapStateToProps = (state) => ({
-  ...state.home,
-  appName: state.common.appName,
-  token: state.common.token,
-});
-
 const mapDispatchToProps = (dispatch) => ({
   onSearch: (titleQuery, pager, payload) =>
     dispatch({ type: APPLY_TITLE_FILTER, titleQuery, pager, payload }),
 });
 
 const Banner = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     if (query.length > 2) {
@@ -24,13 +18,9 @@ const Banner = ({ onSearch }) => {
         query,
         (page) => agent.Items.all(page, query),
         agent.Items.all(0, query)
-      )
+      );
     } else {
-      onSearch(
-        query,
-        (page) => agent.Items.all(page),
-        agent.Items.all(0)
-      )
+      onSearch(query, (page) => agent.Items.all(page), agent.Items.all(0));
     }
   }, [query, onSearch]);
 
@@ -41,13 +31,14 @@ const Banner = ({ onSearch }) => {
         <div className="d-flex justify-content-center form-inline mx-5">
           <span id="get-part">A place to get</span>
           <div className="input-group flex-grow-1 mx-2">
-            <input 
+            <input
               type="text"
               placeholder="What is it that you truly desire?"
-              id="search-box" 
+              id="search-box"
               className="form-control form-control-lg"
               value={query}
-              onChange={(e) => setQuery(e.target.value)} />
+              onChange={(e) => setQuery(e.target.value)}
+            />
           </div>
           <span> the cool stuff.</span>
         </div>
@@ -56,4 +47,4 @@ const Banner = ({ onSearch }) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Banner);
+export default connect({}, mapDispatchToProps)(Banner);
