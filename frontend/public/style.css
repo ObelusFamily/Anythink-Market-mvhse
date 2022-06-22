@@ -52,3 +52,14 @@ body {
   z-index: 1041;
   background-size: cover;
 }
+.search.input-group > span {
+  position: absolute;
+  margin-left: 5px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+}
+.search.input-group > input {
+  padding-left: 25px;
+  height: 20px;
+}
