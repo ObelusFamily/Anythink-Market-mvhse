@@ -4,6 +4,8 @@ import agent from "../../agent";
 import { APPLY_TITLE_FILTER } from "../../constants/actionTypes";
 import logo from "../../imgs/logo.png";
 
+const mapStateToProps = (state) => {};
+
 const mapDispatchToProps = (dispatch) => ({
   onSearch: (titleQuery, pager, payload) =>
     dispatch({ type: APPLY_TITLE_FILTER, titleQuery, pager, payload }),
@@ -47,4 +49,4 @@ const Banner = ({ onSearch }) => {
   );
 };
 
-export default connect({}, mapDispatchToProps)(Banner);
+export default connect(mapStateToProps, mapDispatchToProps)(Banner);
