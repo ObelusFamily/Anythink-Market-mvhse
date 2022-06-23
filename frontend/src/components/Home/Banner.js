@@ -4,18 +4,25 @@ import agent from "../../agent";
 import { APPLY_TITLE_FILTER } from "../../constants/actionTypes";
 import logo from "../../imgs/logo.png";
 
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state) => ({
+  inProgress: state.settings.inProgress,
+  titleQuery: state.itemList.titleQuery,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSearch: (titleQuery, pager, payload) =>
     dispatch({ type: APPLY_TITLE_FILTER, titleQuery, pager, payload }),
 });
 
-const Banner = ({ onSearch }) => {
+const Banner = ({ onSearch, inProgress, titleQuery }) => {
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
+    if (inProgress || titleQuery === query) {
+      return;
+    }
+
     if (query.length > 2) {
       onSearch(
         query,
@@ -25,7 +32,7 @@ const Banner = ({ onSearch }) => {
     } else {
       onSearch(query, (page) => agent.Items.all(page), agent.Items.all(0));
     }
-  }, [query, onSearch]);
+  }, [query, onSearch, titleQuery, inProgress]);
 
   return (
     <div className="banner text-white">
