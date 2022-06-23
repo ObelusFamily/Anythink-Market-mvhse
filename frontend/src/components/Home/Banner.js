@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Banner = ({ onSearch }) => {
   const [query, setQuery] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     if (query.length > 2) {
@@ -31,18 +32,22 @@ const Banner = ({ onSearch }) => {
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
         <div className="d-flex justify-content-center form-inline mx-5">
-          <span id="get-part">A place to get</span>
-          <div className="input-group flex-grow-1 mx-2">
-            <input
-              type="text"
-              placeholder="What is it that you truly desire?"
-              id="search-box"
-              className="form-control form-control-lg"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-          </div>
-          <span> the cool stuff.</span>
+          <span id="get-part">
+            A place to <a onClick={() => setShowSearch(true)}>get</a>
+          </span>
+          {showSearch && (
+            <div className="input-group flex-grow-1 mx-2">
+              <input
+                type="text"
+                placeholder="What is it that you truly desire?"
+                id="search-box"
+                className="form-control form-control-lg"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+          )}
+          <span>&nbsp;the cool stuff.</span>
         </div>
       </div>
     </div>
