@@ -7,6 +7,22 @@ const ItemList = (props) => {
     return <div className="py-4">Loading...</div>;
   }
 
+  if (props.items.length === 0 && !!props.searchQuery) {
+    return (
+      <div
+        id="empty"
+        className="mt-4 jumbotron mx-5 bg-dark text-white text-center rounded-0"
+      >
+        <p className="display-1">
+          <i class="bi bi-emoji-frown-fill"></i>
+        </p>
+        <p>
+          No items found for "<strong>{props.searchQuery}</strong>".
+        </p>
+      </div>
+    );
+  }
+
   if (props.items.length === 0) {
     return <div className="py-4 no-items">No items are here... yet.</div>;
   }
