@@ -24,7 +24,7 @@ const reducer = (state = {}, action) => {
       return {
         ...state,
         inProgress: false,
-      }
+      };
     default:
       return state;
   }
