@@ -7,7 +7,7 @@ const ItemList = (props) => {
     return <div className="py-4">Loading...</div>;
   }
 
-  if (props.items.length === 0) {
+  if (props.items.length === 0 && !!props.searchQuery) {
     return (
       <div className="mt-4 jumbotron mx-5 bg-dark text-white text-center rounded-0">
         <p className="display-1">
