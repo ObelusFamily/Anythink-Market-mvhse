@@ -42,18 +42,19 @@ const Banner = ({ onSearch, inProgress, titleQuery }) => {
           <span id="get-part">
             A place to <a onClick={() => setShowSearch(true)}>get</a>
           </span>
-          {showSearch && (
-            <div className="input-group flex-grow-1 mx-2">
-              <input
-                type="text"
-                placeholder="What is it that you truly desire?"
-                id="search-box"
-                className="form-control form-control-lg"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </div>
-          )}
+          <div
+            className="input-group flex-grow-1 mx-2"
+            style={{ display: showSearch ? "inherit" : "none" }}
+          >
+            <input
+              type="text"
+              placeholder="What is it that you truly desire?"
+              id="search-box"
+              className="form-control form-control-lg"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </div>
           <span>&nbsp;the cool stuff.</span>
         </div>
       </div>
