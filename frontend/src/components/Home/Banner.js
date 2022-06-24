@@ -40,7 +40,7 @@ const Banner = ({ onSearch, inProgress, titleQuery }) => {
         <img src={logo} alt="banner" />
         <div className="d-flex justify-content-center form-inline mx-5">
           <span id="get-part">
-            A place to <a onClick={() => setShowSearch(i => !i)}>get</a>
+            A place to <a onClick={() => setShowSearch((i) => !i)}>get</a>
           </span>
           <div
             className="input-group flex-grow-1 mx-2"
